@@ -51,15 +51,8 @@
 
 ```bash
 cd a-stock-viewer
-chmod +x start.sh  # 如果尚未添加执行权限
+chmod +x start.sßh  # 如果尚未添加执行权限
 ./start.sh
-```
-
-**Windows用户：**
-
-```bash
-cd a-stock-viewer
-start.bat
 ```
 
 #### 方法二：手动启动
