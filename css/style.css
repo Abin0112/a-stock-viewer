@@ -1,0 +1,234 @@
+/* 全局样式 */
+body {
+    font-family: "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* 导航栏样式 */
+.navbar-brand {
+    font-weight: bold;
+}
+
+/* 卡片样式 */
+.card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    font-weight: 500;
+}
+
+/* 表格样式 */
+.table th {
+    font-weight: 500;
+    background-color: #f8f9fa;
+}
+
+/* 股票涨跌样式 */
+.stock-up {
+    color: #f44336;
+}
+
+.stock-down {
+    color: #4caf50;
+}
+
+.stock-unchanged {
+    color: #9e9e9e;
+}
+
+/* 图表容器样式 */
+.chart-container {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
+}
+
+/* 自选股表格样式 */
+#watchlist-table {
+    font-size: 0.9rem;
+}
+
+/* 大盘指数样式 */
+.market-index-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.market-index-name {
+    font-weight: 500;
+}
+
+/* 热门股票样式 */
+.hot-stock-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.hot-stock-name {
+    font-weight: 500;
+}
+
+/* 新闻列表样式 */
+.news-item {
+    margin-bottom: 10px;
+}
+
+.news-title {
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+}
+
+.news-time {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+/* 股票详情样式 */
+.stock-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.stock-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.stock-code {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.stock-price {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.stock-change {
+    font-size: 1rem;
+    margin-left: 10px;
+}
+
+.stock-data-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.stock-data-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.stock-data-label {
+    color: #6c757d;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .stock-data-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 自选股管理模态框样式 */
+#subscribed-stocks-list .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 加载动画 */
+.loading-spinner {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 0.2rem solid rgba(0, 123, 255, 0.2);
+    border-top-color: #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 走势对比页面样式 */
+.compare-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.compare-controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.compare-stock-item {
+    display: flex;
+    align-items: center;
+    background-color: #e9ecef;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.compare-stock-name {
+    margin-right: 5px;
+}
+
+.compare-stock-remove {
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.compare-stock-remove:hover {
+    color: #dc3545;
+}
+
+/* 大盘概览页面样式 */
+.market-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.market-section {
+    margin-bottom: 30px;
+}
+
+/* 财经新闻页面样式 */
+.news-card {
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.news-card:hover {
+    transform: translateY(-3px);
+}
+
+.news-source {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.news-summary {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}

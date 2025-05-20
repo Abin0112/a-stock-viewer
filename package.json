@@ -1,0 +1,12 @@
+{
+  "name": "a-stock-viewer",
+  "version": "1.0.0",
+  "description": "A股行情查看器",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

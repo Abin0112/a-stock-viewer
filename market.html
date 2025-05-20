@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大盘概览 - A股行情查看器</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">A股行情查看器</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="compare.html">走势对比</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="market.html">大盘概览</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.html">财经新闻</a>
+                    </li>
+                </ul>
+                <form class="d-flex" id="search-form">
+                    <input class="form-control me-2" type="search" placeholder="输入股票代码或名称" id="stock-search">
+                    <button class="btn btn-light" type="submit">搜索</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">大盘指数</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row" id="market-indices">
+                            <!-- 大盘指数将通过JavaScript动态添加 -->
+                            <div class="col-md-4 mb-3">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <div class="spinner-border text-primary" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">上证指数走势</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="sh-index-chart" style="width: 100%; height: 300px;">
+                            <!-- 上证指数图表将通过JavaScript动态添加 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">深证成指走势</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="sz-index-chart" style="width: 100%; height: 300px;">
+                            <!-- 深证成指图表将通过JavaScript动态添加 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">行业板块</h5>
+                        <div class="btn-group" role="group" id="industry-period-group">
+                            <input type="radio" class="btn-check" name="industry-period" id="industry-1d" value="1" checked>
+                            <label class="btn btn-outline-primary" for="industry-1d">今日</label>
+                            
+                            <input type="radio" class="btn-check" name="industry-period" id="industry-5d" value="5">
+                            <label class="btn btn-outline-primary" for="industry-5d">5日</label>
+                            
+                            <input type="radio" class="btn-check" name="industry-period" id="industry-1m" value="30">
+                            <label class="btn btn-outline-primary" for="industry-1m">1个月</label>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row" id="industry-sectors">
+                            <!-- 行业板块将通过JavaScript动态添加 -->
+                            <div class="col-12">
+                                <div class="text-center py-3">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">市场涨跌分布</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="market-distribution-chart" style="width: 100%; height: 300px;">
+                            <!-- 市场涨跌分布图表将通过JavaScript动态添加 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">行业资金流向</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="industry-fund-flow-chart" style="width: 100%; height: 300px;">
+                            <!-- 行业资金流向图表将通过JavaScript动态添加 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">市场排行</h5>
+                        <div class="btn-group" role="group" id="rank-type-group">
+                            <input type="radio" class="btn-check" name="rank-type" id="rank-up" value="up" checked>
+                            <label class="btn btn-outline-primary" for="rank-up">涨幅榜</label>
+                            
+                            <input type="radio" class="btn-check" name="rank-type" id="rank-down" value="down">
+                            <label class="btn btn-outline-primary" for="rank-down">跌幅榜</label>
+                            
+                            <input type="radio" class="btn-check" name="rank-type" id="rank-volume" value="volume">
+                            <label class="btn btn-outline-primary" for="rank-volume">成交量榜</label>
+                            
+                            <input type="radio" class="btn-check" name="rank-type" id="rank-turnover" value="turnover">
+                            <label class="btn btn-outline-primary" for="rank-turnover">换手率榜</label>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="market-rank-table">
+                                <thead>
+                                    <tr>
+                                        <th>排名</th>
+                                        <th>代码</th>
+                                        <th>名称</th>
+                                        <th>最新价</th>
+                                        <th>涨跌幅</th>
+                                        <th>涨跌额</th>
+                                        <th>成交量(手)</th>
+                                        <th>成交额(万元)</th>
+                                        <th>换手率</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="market-rank-body">
+                                    <!-- 市场排行数据将通过JavaScript动态添加 -->
+                                    <tr>
+                                        <td colspan="9" class="text-center py-3">
+                                            <div class="spinner-border text-primary" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light text-center text-muted py-3 mt-5">
+        <div class="container">
+            <p class="mb-0">© 2025 A股行情查看器 | 数据仅供参考，不构成投资建议</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/market.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>财经新闻 - A股行情查看器</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">A股行情查看器</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="compare.html">走势对比</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="market.html">大盘概览</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="news.html">财经新闻</a>
+                    </li>
+                </ul>
+                <form class="d-flex" id="search-form">
+                    <input class="form-control me-2" type="search" placeholder="输入股票代码或名称" id="stock-search">
+                    <button class="btn btn-light" type="submit">搜索</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">财经新闻</h5>
+                        <div class="btn-group" role="group" id="news-category-group">
+                            <input type="radio" class="btn-check" name="news-category" id="category-all" value="all" checked>
+                            <label class="btn btn-outline-primary" for="category-all">全部</label>
+                            
+                            <input type="radio" class="btn-check" name="news-category" id="category-market" value="market">
+                            <label class="btn btn-outline-primary" for="category-market">市场</label>
+                            
+                            <input type="radio" class="btn-check" name="news-category" id="category-company" value="company">
+                            <label class="btn btn-outline-primary" for="category-company">公司</label>
+                            
+                            <input type="radio" class="btn-check" name="news-category" id="category-policy" value="policy">
+                            <label class="btn btn-outline-primary" for="category-policy">政策</label>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="news-list">
+                            <!-- 新闻列表将通过JavaScript动态添加 -->
+                            <div class="text-center py-3">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 d-flex justify-content-center">
+                            <nav aria-label="新闻分页">
+                                <ul class="pagination" id="news-pagination">
+                                    <!-- 分页将通过JavaScript动态添加 -->
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">热门新闻</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="hot-news-list">
+                            <!-- 热门新闻将通过JavaScript动态添加 -->
+                            <div class="text-center py-3">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">大盘指数</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group" id="market-index-list">
+                            <!-- 大盘指数数据将通过JavaScript动态添加 -->
+                            <li class="list-group-item text-center">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">热门股票</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group" id="hot-stocks-list">
+                            <!-- 热门股票数据将通过JavaScript动态添加 -->
+                            <li class="list-group-item text-center">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 新闻详情模态框 -->
+    <div class="modal fade" id="newsDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="news-detail-title">新闻详情</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="news-detail-content">
+                    <!-- 新闻详情内容将通过JavaScript动态添加 -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="view-related-stocks-btn">查看相关股票</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light text-center text-muted py-3 mt-5">
+        <div class="container">
+            <p class="mb-0">© 2025 A股行情查看器 | 数据仅供参考，不构成投资建议</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/news.js"></script>
+</body>
+</html>
